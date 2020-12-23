@@ -13,6 +13,14 @@ public class Someday {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSomeday;
 
+    @ManyToOne
+    @JoinColumn(name = "id_thought")
+    private Thought thought;
+
+    @ManyToOne
+    @JoinColumn(name = "id_topic")
+    private Topic topic;
+
     @Column(name = "name")
     private String name;
 

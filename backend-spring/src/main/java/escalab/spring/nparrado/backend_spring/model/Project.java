@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "project")
@@ -13,6 +14,24 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProject;
+
+    @ManyToOne
+    @JoinColumn(name = "id_thought")
+    private Thought thought;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
+    private Set<Action> actions;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
+    private Set<Reference> references;
+
+    @ManyToOne
+    @JoinColumn(name = "id_topic")
+    private Topic topic;
+
+    @ManyToOne
+    @JoinColumn(name = "id_goal")
+    private Goal goal;
 
     @Column(name = "name")
     private String name;

@@ -13,6 +13,10 @@ public class Thought {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idThought;
 
+    @ManyToOne
+    @JoinColumn(name = "id_topic")
+    private Topic topic;
+
     @Column(name = "notes")
     private String notes;
 

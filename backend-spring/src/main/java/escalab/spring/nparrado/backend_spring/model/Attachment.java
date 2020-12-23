@@ -14,6 +14,14 @@ public class Attachment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAttachment;
 
+    @ManyToOne
+    @JoinColumn(name = "id_action")
+    private Action action;
+
+    @ManyToOne
+    @JoinColumn(name = "id_reference")
+    private Reference reference;
+
     @Column(name = "name")
     private String name;
 

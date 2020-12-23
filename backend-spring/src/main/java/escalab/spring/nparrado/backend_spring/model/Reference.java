@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "reference")
@@ -13,6 +14,17 @@ public class Reference {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReference;
+
+    @ManyToOne
+    @JoinColumn(name = "id_thought")
+    private Thought thought;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reference")
+    private Set<Attachment> attachments;
+
+    @ManyToOne
+    @JoinColumn(name = "id_project")
+    private Project project;
 
     @Column(name = "name")
     private String name;

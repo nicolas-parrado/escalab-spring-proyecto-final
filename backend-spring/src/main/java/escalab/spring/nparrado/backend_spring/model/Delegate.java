@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Set;
 
 @Entity
 @Table(name = "delegate")
@@ -13,6 +14,9 @@ public class Delegate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDelegate;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "delegate")
+    private Set<Action> actions;
 
     @Column(name = "name")
     private String name;
