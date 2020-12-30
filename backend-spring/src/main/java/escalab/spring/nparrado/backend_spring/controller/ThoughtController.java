@@ -3,8 +3,11 @@ package escalab.spring.nparrado.backend_spring.controller;
 import escalab.spring.nparrado.backend_spring.exception.ModeloNotFoundException;
 import escalab.spring.nparrado.backend_spring.model.Thought;
 import escalab.spring.nparrado.backend_spring.service.IThoughtService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -14,6 +17,9 @@ import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @RestController
 @RequestMapping("/thoughts")
 public class ThoughtController {
@@ -21,17 +27,27 @@ public class ThoughtController {
     @Autowired
     private IThoughtService service;
 
-    @GetMapping
-    public ResponseEntity<List<Thought>> listar() {
-        return new ResponseEntity<>(service.listar(), HttpStatus.OK);
+    @Operation(summary = "Lista todos los pensamientos (Thoughts)", description = "Lista todos los pensamientos sin filtros", tags = { "Thought" })
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CollectionModel<Thought>> listar() {
+        List<Thought> list = service.listar();
+        CollectionModel<Thought> model = CollectionModel.of(list);
+        for( Thought t : model) {
+            agregarLinkThought(t);
+        }
+        model.add(linkTo(methodOn(ThoughtController.class).listar()).withSelfRel());
+
+        return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Thought> listarPorId(@PathVariable("id") Integer id) {
         Thought thought = service.leerPorId(id);
         if( thought == null) {
             throw new ModeloNotFoundException("ID NO ENCONTRADO " + id);
         }
+
+        agregarLinkThought(thought);
 
         return new ResponseEntity<>(thought, HttpStatus.OK);
     }
@@ -49,7 +65,9 @@ public class ThoughtController {
 
     @PutMapping
     public ResponseEntity<Thought> modificar(@Valid @RequestBody Thought thought) {
-        return new ResponseEntity<>(service.modificar(thought), HttpStatus.OK);
+        service.modificar(thought);
+        agregarLinkThought(thought);
+        return new ResponseEntity<>(thought, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -60,5 +78,11 @@ public class ThoughtController {
         }
         service.eliminar(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    private void agregarLinkThought(Thought t){
+        t.add(linkTo(methodOn(ThoughtController.class).listarPorId(t.getIdThought())).withSelfRel());
+
+        //TODO: Agregar link de Topic
     }
 }

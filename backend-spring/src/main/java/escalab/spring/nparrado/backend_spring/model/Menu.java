@@ -1,6 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "menu")
 @Data
-public class Menu {
+public class Menu extends RepresentationModel<Menu> {
 	
 	@Id
 	private Integer idMenu;

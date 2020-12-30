@@ -1,6 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -9,7 +10,7 @@ import java.util.Set;
 @Entity
 @Table(name = "delegate")
 @Data
-public class Delegate {
+public class Delegate extends RepresentationModel<Delegate> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

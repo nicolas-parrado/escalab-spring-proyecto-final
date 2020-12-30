@@ -1,6 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -8,7 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name = "context")
 @Data
-public class Context {
+public class Context extends RepresentationModel<Context> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

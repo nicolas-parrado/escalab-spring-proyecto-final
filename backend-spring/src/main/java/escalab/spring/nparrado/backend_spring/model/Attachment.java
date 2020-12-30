@@ -1,6 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -8,7 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "attachment")
 @Data
-public class Attachment {
+public class Attachment extends RepresentationModel<Attachment> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

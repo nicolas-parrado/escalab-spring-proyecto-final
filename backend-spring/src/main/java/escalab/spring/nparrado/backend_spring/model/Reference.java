@@ -1,6 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,7 +10,7 @@ import java.util.Set;
 @Entity
 @Table(name = "reference")
 @Data
-public class Reference {
+public class Reference extends RepresentationModel<Reference> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
