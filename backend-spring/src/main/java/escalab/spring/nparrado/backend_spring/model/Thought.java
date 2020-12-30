@@ -3,6 +3,7 @@ package escalab.spring.nparrado.backend_spring.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "thought")
@@ -22,4 +23,7 @@ public class Thought {
 
     @Column(name = "processed")
     private Boolean processed;
+
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
 }
