@@ -2,7 +2,6 @@ package escalab.spring.nparrado.backend_spring.controller;
 
 import escalab.spring.nparrado.backend_spring.exception.ModeloNotFoundException;
 import escalab.spring.nparrado.backend_spring.model.Thought;
-import escalab.spring.nparrado.backend_spring.model.Usuario;
 import escalab.spring.nparrado.backend_spring.service.IThoughtService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -47,9 +46,9 @@ public class ThoughtController {
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
-    @Operation( summary = "Obtiene información de un pensamiento (Thought)",
-                description = "Obteniene la información de un pensamiento (Thought) buscando con su ID.",
-                tags = {"Thought"})
+    @Operation(summary = "Obtiene información de un pensamiento (Thought)",
+            description = "Obteniene la información de un pensamiento (Thought) buscando con su ID.",
+            tags = {"Thought"})
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Ejecución exitosa",
                     content = @Content(schema = @Schema(implementation = Thought.class))),
@@ -115,7 +114,7 @@ public class ThoughtController {
     static public void agregarLinkThought(Thought thought) {
         thought.add(linkTo(methodOn(ThoughtController.class).listarPorId(thought.getIdThought())).withSelfRel());
 
-        if ( thought.getTopic() != null ) {
+        if (thought.getTopic() != null) {
             thought.add(linkTo(methodOn(TopicController.class).listarPorId(thought.getTopic().getIdTopic())).withRel(
                     "topic"));
         }
