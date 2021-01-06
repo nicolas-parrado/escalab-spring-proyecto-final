@@ -34,17 +34,6 @@ public class ActionController {
     @Autowired
     private IActionService service;
 
-    /**
-     * Función para incorporar los links HATEOAS a un Action cualquiera
-     *
-     * @param action Acción a la que se le incorporarán los links de HATEOAS
-     */
-    static public void agregarLinkThought(Action action) {
-        action.add(linkTo(methodOn(ActionController.class).listarPorId(action.getIdAction())).withSelfRel());
-
-        // TODO: agregar links
-
-    }
 
     @Operation(summary = "Lista todas las acciones (Actions)", description = "Lista todas las acciones sin filtros.", tags = {"Actions"})
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,7 +41,7 @@ public class ActionController {
         List<Action> list = service.listar();
         CollectionModel<Action> model = CollectionModel.of(list);
         for (Action a : model) {
-            agregarLinkThought(a);
+            agregarLinkAction(a);
         }
         model.add(linkTo(methodOn(ActionController.class).listar()).withSelfRel());
 
@@ -73,7 +62,7 @@ public class ActionController {
             throw new ModeloNotFoundException("ID NO ENCONTRADO " + id);
         }
 
-        agregarLinkThought(action);
+        agregarLinkAction(action);
 
         return new ResponseEntity<>(action, HttpStatus.OK);
     }
@@ -100,7 +89,7 @@ public class ActionController {
     @PutMapping
     public ResponseEntity<Action> modificar(@Valid @RequestBody Action action) {
         service.modificar(action);
-        agregarLinkThought(action);
+        agregarLinkAction(action);
         return new ResponseEntity<>(action, HttpStatus.OK);
     }
 
@@ -117,5 +106,18 @@ public class ActionController {
         }
         service.eliminar(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    /**
+     * Función para incorporar los links HATEOAS a un Action cualquiera
+     *
+     * @param action Acción a la que se le incorporarán los links de HATEOAS
+     */
+    static public void agregarLinkAction(Action action) {
+        action.add(linkTo(methodOn(ActionController.class).listarPorId(action.getIdAction())).withSelfRel());
+
+        // TODO: agregar links
+
     }
 }

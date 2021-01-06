@@ -40,7 +40,7 @@ public class AttachmentController {
         List<Attachment> list = service.listar();
         CollectionModel<Attachment> model = CollectionModel.of(list);
         for (Attachment a : model) {
-            agregarLinkThought(a);
+            agregarLinkAttachment(a);
         }
         model.add(linkTo(methodOn(AttachmentController.class).listar()).withSelfRel());
 
@@ -61,7 +61,7 @@ public class AttachmentController {
             throw new ModeloNotFoundException("ID NO ENCONTRADO " + id);
         }
 
-        agregarLinkThought(attachment);
+        agregarLinkAttachment(attachment);
 
         return new ResponseEntity<>(attachment, HttpStatus.OK);
     }
@@ -88,7 +88,7 @@ public class AttachmentController {
     @PutMapping
     public ResponseEntity<Attachment> modificar(@Valid @RequestBody Attachment attachment) {
         service.modificar(attachment);
-        agregarLinkThought(attachment);
+        agregarLinkAttachment(attachment);
         return new ResponseEntity<>(attachment, HttpStatus.OK);
     }
 
@@ -112,7 +112,7 @@ public class AttachmentController {
      *
      * @param attachment Adjunto al que se le incorporarán los links de HATEOAS
      */
-    static public void agregarLinkThought(Attachment attachment) {
+    static public void agregarLinkAttachment(Attachment attachment) {
         attachment.add(linkTo(methodOn(AttachmentController.class).listarPorId(attachment.getIdAttachment())).withSelfRel());
 
         // TODO: agregar links

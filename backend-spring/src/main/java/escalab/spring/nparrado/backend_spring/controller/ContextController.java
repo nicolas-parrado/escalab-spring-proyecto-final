@@ -40,7 +40,7 @@ public class ContextController {
         List<Context> list = service.listar();
         CollectionModel<Context> model = CollectionModel.of(list);
         for (Context context : model) {
-            agregarLinkThought(context);
+            agregarLinkContext(context);
         }
         model.add(linkTo(methodOn(ContextController.class).listar()).withSelfRel());
 
@@ -61,7 +61,7 @@ public class ContextController {
             throw new ModeloNotFoundException("ID NO ENCONTRADO " + id);
         }
 
-        agregarLinkThought(context);
+        agregarLinkContext(context);
 
         return new ResponseEntity<>(context, HttpStatus.OK);
     }
@@ -85,7 +85,7 @@ public class ContextController {
     @PutMapping
     public ResponseEntity<Context> modificar(@Valid @RequestBody Context context) {
         service.modificar(context);
-        agregarLinkThought(context);
+        agregarLinkContext(context);
         return new ResponseEntity<>(context, HttpStatus.OK);
     }
 
@@ -109,7 +109,7 @@ public class ContextController {
      *
      * @param context Contexto al que se le incorporarán los links de HATEOAS
      */
-    static public void agregarLinkThought(Context context) {
+    static public void agregarLinkContext(Context context) {
         context.add(linkTo(methodOn(ContextController.class).listarPorId(context.getIdContext())).withSelfRel());
 
         // TODO: agregar links
