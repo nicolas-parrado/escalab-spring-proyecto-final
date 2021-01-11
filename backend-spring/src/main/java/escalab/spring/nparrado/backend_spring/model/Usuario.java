@@ -12,6 +12,7 @@ import java.util.List;
 public class Usuario extends RepresentationModel<Usuario> {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idUsuario;
 
 	@Column(name = "nombre", nullable = false, unique = true)

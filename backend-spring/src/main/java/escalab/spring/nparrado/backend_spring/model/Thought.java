@@ -1,6 +1,9 @@
 package escalab.spring.nparrado.backend_spring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -18,7 +21,7 @@ public class Thought extends RepresentationModel<Thought> {
 
     @ManyToOne
     @JoinColumn(name = "id_topic")
-    @JsonIgnore
+    @JsonIgnoreProperties("thoughts")
     private Topic topic;
 
     @Column(name = "notes")

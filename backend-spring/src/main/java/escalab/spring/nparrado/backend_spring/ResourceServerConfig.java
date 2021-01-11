@@ -35,14 +35,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		.and()
 		.authorizeRequests()
 				.antMatchers("/swagger.ui.html/**").authenticated()
-				.antMatchers("/consultas/**").permitAll()
-				.antMatchers("/especialidades/**").authenticated()
-				.antMatchers("/examenes/**").authenticated()
-				.antMatchers("/medicos/**").authenticated()
+                .antMatchers("/actions/**").authenticated()
+				.antMatchers("/projects/**").authenticated()
 				.antMatchers("/menus/**").authenticated()
 				.antMatchers("/tokens/**").permitAll()
-				.antMatchers("/consultaexamenes/**").authenticated()
-				.antMatchers("/pacientes/**").authenticated()
 				.antMatchers("/usuarios/").permitAll()
 				.antMatchers("/usuarios/getAll/**").hasRole("USER");
 	}

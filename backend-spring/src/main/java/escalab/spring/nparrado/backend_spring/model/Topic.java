@@ -1,10 +1,14 @@
 package escalab.spring.nparrado.backend_spring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
-import net.minidev.json.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,21 +20,21 @@ public class Topic extends RepresentationModel<Topic> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTopic;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic")
-    @JsonIgnore
-    private Set<Thought> thoughts;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("topic")
+    private Set<Thought> thoughts = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic")
-    @JsonIgnore
-    private Set<Someday> somedays;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("topic")
+    private Set<Someday> somedays = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic")
-    @JsonIgnore
-    private Set<Project> projects;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("topic")
+    private Set<Project> projects = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic")
-    @JsonIgnore
-    private Set<Action> actions;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("topic")
+    private Set<Action> actions = new HashSet<>();
 
     @Column(name = "name")
     private String name;

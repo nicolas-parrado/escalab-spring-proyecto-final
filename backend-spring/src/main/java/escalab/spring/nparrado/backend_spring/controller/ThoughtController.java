@@ -47,7 +47,7 @@ public class ThoughtController {
     }
 
     @Operation(summary = "Obtiene información de un pensamiento (Thought)",
-            description = "Obteniene la información de un pensamiento (Thought) buscando con su ID.",
+            description = "Obtiene la información de un pensamiento (Thought) buscando con su ID.",
             tags = {"Thought"})
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Ejecución exitosa",

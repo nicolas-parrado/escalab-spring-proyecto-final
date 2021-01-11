@@ -1,6 +1,10 @@
 package escalab.spring.nparrado.backend_spring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -17,10 +21,12 @@ public class Attachment extends RepresentationModel<Attachment> {
 
     @ManyToOne
     @JoinColumn(name = "id_action")
+    @JsonIgnoreProperties("attachments")
     private Action action;
 
     @ManyToOne
     @JoinColumn(name = "id_reference")
+    @JsonIgnoreProperties("attachments")
     private Reference reference;
 
     @Column(name = "name")

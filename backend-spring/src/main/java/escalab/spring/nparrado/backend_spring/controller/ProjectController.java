@@ -1,5 +1,6 @@
 package escalab.spring.nparrado.backend_spring.controller;
 
+import escalab.spring.nparrado.backend_spring.dto.ActionsProject;
 import escalab.spring.nparrado.backend_spring.exception.ModeloNotFoundException;
 import escalab.spring.nparrado.backend_spring.model.Project;
 import escalab.spring.nparrado.backend_spring.service.IProjectService;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -105,6 +107,30 @@ public class ProjectController {
         }
         service.eliminar(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "Lista todos los proyectos (Projects) con el número de acciones que tiene cada uno",
+            description = "Lista todos los proyectos sin filtros con el número de acciones que tiene cada uno.",
+            tags = {"Projects"})
+    @GetMapping("/actions")
+    public ResponseEntity<CollectionModel<ActionsProject>> accionesProyecto() {
+        List<Project> proyectos = service.listar();
+        List<ActionsProject> actionsProjects = new ArrayList<>();
+
+        for (Project p: proyectos) {
+            ActionsProject ap = new ActionsProject();
+            ap.setProjectName(p.getName());
+            ap.setActionsCount(p.getActions() == null ? 0 : p.getActions().size());
+            ap.add(linkTo(methodOn(ProjectController.class).listarPorId(p.getIdProject())).withSelfRel());
+            actionsProjects.add(ap);
+        }
+
+        CollectionModel<ActionsProject> model = CollectionModel.of(actionsProjects);
+        model.add(linkTo(methodOn(ProjectController.class).accionesProyecto()).withSelfRel());
+
+        return new ResponseEntity<>(model, HttpStatus.OK);
+
     }
 
     /**

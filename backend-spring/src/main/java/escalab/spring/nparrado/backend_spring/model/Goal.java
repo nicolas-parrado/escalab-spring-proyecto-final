@@ -1,10 +1,15 @@
 package escalab.spring.nparrado.backend_spring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,10 +23,12 @@ public class Goal extends RepresentationModel<Goal> {
 
     @ManyToOne
     @JoinColumn(name = "id_goal_level")
+    @JsonIgnoreProperties("goals")
     private GoalLevel goalLevel;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal")
-    private Set<Project> projects;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("goal")
+    private Set<Project> projects = new HashSet<>();
 
     @Column(name = "name")
     private String name;
