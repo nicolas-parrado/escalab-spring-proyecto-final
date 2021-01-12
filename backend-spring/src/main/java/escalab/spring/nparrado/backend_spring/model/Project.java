@@ -1,10 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -15,6 +12,10 @@ import java.util.Set;
 @Entity
 @Table(name = "project")
 @Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        property = "idProject"
+)
 public class Project extends RepresentationModel<Project> {
 
     @Id
@@ -23,25 +24,30 @@ public class Project extends RepresentationModel<Project> {
 
     @ManyToOne
     @JoinColumn(name = "id_thought")
-    @JsonIgnoreProperties("projects")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"topic"})
     private Thought thought;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("project")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","topic","actionStatus","context","delegate","attachments","project"})
     private Set<Action> actions = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("project")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","attachments","project"})
     private Set<Reference> references = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "id_topic")
-    @JsonIgnoreProperties("projects")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thoughts","somedays","projects","actions"})
     private Topic topic;
 
     @ManyToOne
     @JoinColumn(name = "id_goal")
-    @JsonIgnoreProperties("projects")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"goalLevel","projects"})
     private Goal goal;
 
     @Column(name = "name")

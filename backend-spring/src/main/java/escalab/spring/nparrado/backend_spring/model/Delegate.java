@@ -1,10 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -15,6 +12,10 @@ import java.util.Set;
 @Entity
 @Table(name = "delegate")
 @Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        property = "idDelegate"
+)
 public class Delegate extends RepresentationModel<Delegate> {
 
     @Id
@@ -22,7 +23,8 @@ public class Delegate extends RepresentationModel<Delegate> {
     private Integer idDelegate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "delegate", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("delegate")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","topic","actionStatus","context","delegate","attachments","project"})
     private Set<Action> actions = new HashSet<>();
 
     @Column(name = "name")

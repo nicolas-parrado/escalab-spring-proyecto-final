@@ -1,9 +1,6 @@
 package escalab.spring.nparrado.backend_spring.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -13,6 +10,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "thought")
 @Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        property = "idThought"
+)
 public class Thought extends RepresentationModel<Thought> {
 
     @Id
@@ -21,7 +22,8 @@ public class Thought extends RepresentationModel<Thought> {
 
     @ManyToOne
     @JoinColumn(name = "id_topic")
-    @JsonIgnoreProperties("thoughts")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thoughts","somedays","projects","actions"})
     private Topic topic;
 
     @Column(name = "notes")

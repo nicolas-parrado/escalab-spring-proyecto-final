@@ -1,6 +1,9 @@
 package escalab.spring.nparrado.backend_spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
@@ -15,6 +18,10 @@ import java.util.Set;
 @Table(name = "action")
 @Schema(description = "Acciones o tareas a realizar")
 @Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        property = "idAction"
+)
 public class Action  extends RepresentationModel<Action> {
 
     @Id
@@ -24,40 +31,47 @@ public class Action  extends RepresentationModel<Action> {
     @ManyToOne
     @Schema(description = "Pensamiento del cual vino esta acción")
     @JoinColumn(name = "id_thought")
-    @JsonIgnoreProperties("actions")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"topic"})
     private Thought thought;
 
     @ManyToOne
     @Schema(description = "Tema o Tópico al que pertenece esta acción")
     @JoinColumn(name = "id_topic")
-    @JsonIgnoreProperties("actions")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thoughts","somedays","projects","actions"})
     private Topic topic;
 
     @ManyToOne
     @Schema(description = "Estado de la acción, puede ser pendiente o completado")
     @JoinColumn(name = "id_action_status")
-    @JsonIgnoreProperties("actions")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"actions"})
     private ActionStatus actionStatus;
 
     @ManyToOne
     @Schema(description = "Contexto asociado a esta acción")
     @JoinColumn(name = "id_context")
-    @JsonIgnoreProperties("actions")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"actions"})
     private Context context;
 
     @ManyToOne
     @Schema(description = "Persona a quien se delegó la acción")
     @JoinColumn(name = "id_delegate")
-    @JsonIgnoreProperties("actions")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"actions"})
     private Delegate delegate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "action", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("action")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"action","reference"})
     private Set<Attachment> attachments = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "id_project")
-    @JsonIgnoreProperties("actions")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","actions","references","topic","goal"})
     private Project project;
 
     @Column(name = "name")

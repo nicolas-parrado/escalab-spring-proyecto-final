@@ -2,6 +2,7 @@ package escalab.spring.nparrado.backend_spring.controller;
 
 import escalab.spring.nparrado.backend_spring.dto.ActionsProject;
 import escalab.spring.nparrado.backend_spring.exception.ModeloNotFoundException;
+import escalab.spring.nparrado.backend_spring.model.Action;
 import escalab.spring.nparrado.backend_spring.model.Project;
 import escalab.spring.nparrado.backend_spring.service.IProjectService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,6 +11,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
@@ -35,6 +38,7 @@ public class ProjectController {
     @Autowired
     private IProjectService service;
 
+    private Logger log = LoggerFactory.getLogger(ProjectController.class);
 
     @Operation(summary = "Lista todos los proyectos (Projects)", description = "Lista todos los proyectos sin filtros.", tags = {"Projects"})
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -115,23 +119,57 @@ public class ProjectController {
             tags = {"Projects"})
     @GetMapping("/actions")
     public ResponseEntity<CollectionModel<ActionsProject>> accionesProyecto() {
+        log.info("Inicia");
         List<Project> proyectos = service.listar();
+        log.info("Obtiene proyectos: " + proyectos.size());
         List<ActionsProject> actionsProjects = new ArrayList<>();
 
         for (Project p: proyectos) {
+            log.info("Lee proyecto " + p.getIdProject() + " : " + p.getName());
             ActionsProject ap = new ActionsProject();
             ap.setProjectName(p.getName());
+            log.info("Busca las acciones");
             ap.setActionsCount(p.getActions() == null ? 0 : p.getActions().size());
             ap.add(linkTo(methodOn(ProjectController.class).listarPorId(p.getIdProject())).withSelfRel());
             actionsProjects.add(ap);
+            log.info("Agrega correctamente las acciones");
         }
 
         CollectionModel<ActionsProject> model = CollectionModel.of(actionsProjects);
         model.add(linkTo(methodOn(ProjectController.class).accionesProyecto()).withSelfRel());
 
+        log.info("Retorna la respuesta");
         return new ResponseEntity<>(model, HttpStatus.OK);
 
     }
+
+
+    @Operation( summary = "Obtiene información de las acciones (Actions) de un proyecto (Project)",
+            description = "Obtiene la información de las acciones (Actions) de un proyecto (Project) buscando por su ID.",
+            tags = {"Projects"})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Ejecución exitosa",
+                    content = @Content(schema = @Schema(implementation = Action.class))),
+            @ApiResponse(responseCode = "404", description = "Project no encontrada")})
+    @GetMapping("/{id}/actions")
+    public ResponseEntity<CollectionModel<Action>> acciones_por_id(@PathVariable("id") Integer id) {
+        Project project = service.leerPorId(id);
+        if( project == null ) {
+            throw new ModeloNotFoundException("Id NO ENCONTRADO " + id);
+        }
+
+        for(Action action : project.getActions()) {
+            ActionController.agregarLinkAction(action);
+        }
+
+        CollectionModel<Action> model = CollectionModel.of(project.getActions());
+        model.add(linkTo(methodOn(ProjectController.class).acciones_por_id(id)).withSelfRel());
+        return new ResponseEntity<>(model, HttpStatus.OK);
+    }
+
+
+
+
 
     /**
      * Función para incorporar los links HATEOAS a un Project cualquiera
@@ -142,6 +180,9 @@ public class ProjectController {
         project.add(linkTo(methodOn(ProjectController.class).listarPorId(project.getIdProject())).withSelfRel());
 
         // TODO: agregar links
+        project.add(linkTo(methodOn(ProjectController.class).acciones_por_id(project.getIdProject())).withRel("Acciones"));
+
+
 
     }
 

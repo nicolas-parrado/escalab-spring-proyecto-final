@@ -1,10 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -13,6 +10,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "attachment")
 @Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        property = "idAttachment"
+)
 public class Attachment extends RepresentationModel<Attachment> {
 
     @Id
@@ -21,12 +22,14 @@ public class Attachment extends RepresentationModel<Attachment> {
 
     @ManyToOne
     @JoinColumn(name = "id_action")
-    @JsonIgnoreProperties("attachments")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","topic","actionStatus","context","delegate","attachments","project"})
     private Action action;
 
     @ManyToOne
     @JoinColumn(name = "id_reference")
-    @JsonIgnoreProperties("attachments")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","attachments","project"})
     private Reference reference;
 
     @Column(name = "name")

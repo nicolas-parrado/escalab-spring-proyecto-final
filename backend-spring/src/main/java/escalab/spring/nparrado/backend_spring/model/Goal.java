@@ -1,10 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -15,6 +12,10 @@ import java.util.Set;
 @Entity
 @Table(name = "goal")
 @Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        property = "idGoal"
+)
 public class Goal extends RepresentationModel<Goal> {
 
     @Id
@@ -23,11 +24,13 @@ public class Goal extends RepresentationModel<Goal> {
 
     @ManyToOne
     @JoinColumn(name = "id_goal_level")
-    @JsonIgnoreProperties("goals")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"goals"})
     private GoalLevel goalLevel;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("goal")
+    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","actions","references","topic","goal"})
     private Set<Project> projects = new HashSet<>();
 
     @Column(name = "name")
