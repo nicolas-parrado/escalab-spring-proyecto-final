@@ -74,7 +74,7 @@ public class Action  extends RepresentationModel<Action> {
     @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","actions","references","topic","goal"})
     private Project project;
 
-    @Column(name = "name")
+    @Column(name = "name", length = 70)
     @Size(min = 3, max = 70, message = "Nombre debe tener mínimo 3 caracteres y máximo de 70")
     @Schema(description = "Nombre o descripción corta de la acción a realizar")
     private String name;

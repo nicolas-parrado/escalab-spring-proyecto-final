@@ -1,6 +1,7 @@
 package escalab.spring.nparrado.backend_spring.model;
 
 import com.fasterxml.jackson.annotation.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "thought")
+@Schema(description = "Pensamiento que genera una tarea o proyecto")
 @Data
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.IntSequenceGenerator.class,
@@ -22,16 +24,21 @@ public class Thought extends RepresentationModel<Thought> {
 
     @ManyToOne
     @JoinColumn(name = "id_topic")
+    @Schema(description = "Tema o Tópico al que pertenece este pensamiento")
     @JsonIgnore
     @JsonIgnoreProperties(ignoreUnknown = true, value = {"thoughts","somedays","projects","actions"})
     private Topic topic;
 
+    @Lob
     @Column(name = "notes")
+    @Schema(description = "Notas adicionales en formato Markdown del pensamiento")
     private String notes;
 
     @Column(name = "processed")
+    @Schema(description = "Indica si el pensamiento fue procesado (true) o no (false)")
     private Boolean processed;
 
     @Column(name = "created_date")
+    @Schema(description = "Fecha de creación del pensamiento")
     private LocalDateTime createdDate;
 }

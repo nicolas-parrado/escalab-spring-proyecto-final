@@ -179,9 +179,8 @@ public class ProjectController {
     static public void agregarLinkProject(Project project) {
         project.add(linkTo(methodOn(ProjectController.class).listarPorId(project.getIdProject())).withSelfRel());
 
-        // TODO: agregar links
+        // Links adicionales links
         project.add(linkTo(methodOn(ProjectController.class).acciones_por_id(project.getIdProject())).withRel("Acciones"));
-
 
 
     }
