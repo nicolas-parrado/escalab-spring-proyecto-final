@@ -3,6 +3,7 @@ package escalab.spring.nparrado.backend_spring.model;
 import com.fasterxml.jackson.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import org.hibernate.annotations.Type;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -32,30 +33,26 @@ public class Project extends RepresentationModel<Project> {
     @JsonIgnoreProperties(ignoreUnknown = true, value = {"topic"})
     private Thought thought;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @Schema(description = "Listado de acciones a realizar en este proyecto")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","topic","actionStatus","context","delegate","attachments","project"})
     private Set<Action> actions = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Schema(description = "Listado de referencias que tiene este proyecto")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","attachments","project"})
     private Set<Reference> references = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "id_topic")
     @Schema(description = "Tema o Tópico al que pertenece este proyecto")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thoughts","somedays","projects","actions"})
     private Topic topic;
 
     @ManyToOne
     @JoinColumn(name = "id_goal")
     @Schema(description = "Objetivo al que pertenece este proyecto")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"goalLevel","projects"})
     private Goal goal;
 
     @Column(name = "name", length = 70)
@@ -79,27 +76,28 @@ public class Project extends RepresentationModel<Project> {
     @Schema(description = "Fecha en la cual se completó el proyecto")
     private LocalDateTime doneDate;
 
-    @Column(name = "purpose", length = 255)
-    @Size(min = 3, max = 255, message = "Purpose debe tener mínimo 3 caracteres y máximo de 255")
+    @Column(name = "purpose", length = 256)
+    @Size(min = 3, max = 256, message = "Purpose debe tener mínimo 3 caracteres y máximo de 256")
     @Schema(description = "Propósito del proyecto")
     private String purpose;
 
-    @Column(name = "vision", length = 255)
-    @Size(min = 3, max = 255, message = "Vision debe tener mínimo 3 caracteres y máximo de 255")
+    @Column(name = "vision", length = 256)
+    @Size(min = 3, max = 256, message = "Vision debe tener mínimo 3 caracteres y máximo de 256")
     @Schema(description = "Visión del proyecto")
     private String vision;
 
-    @Column(name = "brainstorming", length = 255)
-    @Size(min = 3, max = 255, message = "Brainstorming debe tener mínimo 3 caracteres y máximo de 255")
+    @Column(name = "brainstorming", length = 256)
+    @Size(min = 3, max = 256, message = "Brainstorming debe tener mínimo 3 caracteres y máximo de 256")
     @Schema(description = "Lluvia de ideas que servirán para delimitar el proyecto")
     private String brainstorming;
 
     @Column(name = "organizing")
-    @Size(min = 3, max = 255, message = "Organizing debe tener mínimo 3 caracteres y máximo de 255")
+    @Size(min = 3, max = 256, message = "Organizing debe tener mínimo 3 caracteres y máximo de 256")
     @Schema(description = "De qué manera se organizará o coordinará el proyecto")
     private String organizing;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "notes")
     @Schema(description = "Notas adicionales en formato Markdown del proyecto")
     private String notes;

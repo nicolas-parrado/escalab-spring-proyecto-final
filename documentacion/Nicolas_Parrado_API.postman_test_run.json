@@ -1,0 +1,156 @@
+{
+	"id": "1b4c8554-940c-48e5-90c6-5e5567e72815",
+	"name": "Nicolas Parrado API",
+	"timestamp": "2021-01-18T05:03:28.992Z",
+	"collection_id": "2891b969-51b7-4f92-9b8a-bc59961e96f1",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 15,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "dec374c2-b309-4bc9-bb53-27a5b6ecf8ec",
+			"name": "post Access Token",
+			"time": 197,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				169,
+				191,
+				213,
+				228,
+				197
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "45781d9a-9966-48ed-a4e2-0ff18d9fc0fd",
+			"name": "Guarda un nuevo proyecto (Project)",
+			"time": 15,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				52,
+				17,
+				36,
+				40,
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				},
+				{
+					"Status code is 201": true
+				},
+				{
+					"Status code is 201": true
+				},
+				{
+					"Status code is 201": true
+				},
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "1458994d-d1aa-4a77-976b-7d17360ba578",
+			"name": "Lista todos los proyectos (Projects)",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				20,
+				22,
+				21,
+				18,
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 5,
+	"totalTime": 1259,
+	"collection": {
+		"requests": [
+			{
+				"id": "dec374c2-b309-4bc9-bb53-27a5b6ecf8ec",
+				"method": "POST"
+			},
+			{
+				"id": "45781d9a-9966-48ed-a4e2-0ff18d9fc0fd",
+				"method": "POST"
+			},
+			{
+				"id": "1458994d-d1aa-4a77-976b-7d17360ba578",
+				"method": "GET"
+			}
+		]
+	}
+}

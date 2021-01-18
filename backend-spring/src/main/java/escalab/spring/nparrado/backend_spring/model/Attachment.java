@@ -23,20 +23,6 @@ public class Attachment extends RepresentationModel<Attachment> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAttachment;
 
-    @ManyToOne
-    @JoinColumn(name = "id_action")
-    @Schema(description = "Acción que es dueña de este archivo adjunto")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","topic","actionStatus","context","delegate","attachments","project"})
-    private Action action;
-
-    @ManyToOne
-    @JoinColumn(name = "id_reference")
-    @Schema(description = "Referencia que es dueña de este archivo adjunto")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","attachments","project"})
-    private Reference reference;
-
     @Column(name = "name", length = 70)
     @Size(min = 3, max = 70, message = "Nombre debe tener mínimo 3 caracteres y máximo de 70")
     private String name;

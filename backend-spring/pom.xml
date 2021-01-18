@@ -10,9 +10,22 @@
 	</parent>
 	<groupId>escalab.spring.nparrado</groupId>
 	<artifactId>backend-spring</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>backend-spring</name>
 	<description>Proyecto final de curso Spring en Escalab</description>
+
+	<repositories>
+		<repository>
+			<id>spring-releases</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-releases</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<properties>
 		<java.version>1.8</java.version>

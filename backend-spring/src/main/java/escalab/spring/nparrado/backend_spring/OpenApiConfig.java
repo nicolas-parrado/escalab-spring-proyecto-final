@@ -13,7 +13,10 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .components(new Components())
-                .info(new Info().title("Nicolas Parrado API").description(
-                        "API de proyecto Spring para curso Escalab."));
+                .info(new Info()
+                        .title("Nicolas Parrado API")
+                        .description(
+                        "API de proyecto Spring para curso Escalab.")
+                        .version("1.0.0"));
     }
 }

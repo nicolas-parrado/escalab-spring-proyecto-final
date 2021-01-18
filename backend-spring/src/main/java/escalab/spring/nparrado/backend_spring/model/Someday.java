@@ -3,6 +3,7 @@ package escalab.spring.nparrado.backend_spring.model;
 import com.fasterxml.jackson.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import org.hibernate.annotations.Type;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -26,15 +27,7 @@ public class Someday extends RepresentationModel<Someday> {
     @JoinColumn(name = "id_thought")
     @Schema(description = "Pensamiento del que se generó el someday")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"topic"})
     private Thought thought;
-
-    @ManyToOne
-    @JoinColumn(name = "id_topic")
-    @Schema(description = "Tema o Tópico al que pertenece este someday")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thoughts","somedays","projects","actions"})
-    private Topic topic;
 
     @Column(name = "name", length = 70)
     @Size(min = 3, max = 70, message = "Nombre debe tener mínimo 3 caracteres y máximo de 70")
@@ -50,6 +43,7 @@ public class Someday extends RepresentationModel<Someday> {
     private LocalDateTime tickleDate;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "notes")
     @Schema(description = "Notas adicionales en formato Markdown del someday")
     private String notes;

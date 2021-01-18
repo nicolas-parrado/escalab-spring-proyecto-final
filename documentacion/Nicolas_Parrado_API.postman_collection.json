@@ -1,0 +1,5120 @@
+{
+	"info": {
+		"_postman_id": "2891b969-51b7-4f92-9b8a-bc59961e96f1",
+		"name": "Nicolas Parrado API",
+		"description": "API de proyecto Spring para curso Escalab.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "topics",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de un tópico (Topic)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/topics/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"topics",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de un tópico (Topic) buscando con su ID."
+							},
+							"response": [
+								{
+									"name": "Topic no encontrado",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/topics/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"topics",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idTopic\": 61132480,\n \"name\": \"adip\",\n \"description\": \"esse\",\n \"fontColor\": \"sed \",\n \"backgroundColor\": \"volu\",\n \"_links\": {}\n}"
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/topics/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"topics",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								}
+							]
+						},
+						{
+							"name": "Elimina un tópico (Topic)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/topics/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"topics",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina un tópico (Topic) buscando por su ID"
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/topics/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"topics",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								},
+								{
+									"name": "Topic no encontrado",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/topics/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"topics",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los tópicos (Topic)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/topics",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"topics"
+							]
+						},
+						"description": "Lista todos los tópicos sin filtros"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/topics",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"topics"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de un tópico (Topic)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/topics",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"topics"
+							]
+						},
+						"description": "Modifica los datos de un tópico."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/topics",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"topics"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda un nuevo tópico (Topic)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/topics",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"topics"
+							]
+						},
+						"description": "Guarda la información de un nuevo tópico."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitoas",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/topics",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"topics"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "thoughts",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de un pensamiento (Thought)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/thoughts/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"thoughts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de un pensamiento (Thought) buscando con su ID."
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/thoughts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"thoughts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								},
+								{
+									"name": "Thought no encontrado",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/thoughts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"thoughts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idThought\": -71367960,\n \"notes\": \"in occaecat quis et sint\",\n \"processed\": false,\n \"createdDate\": \"1952-05-29T14:29:33.892Z\",\n \"_links\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Elimina un pensamiento (Thought)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/thoughts/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"thoughts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina un pensamiento (Thought) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/thoughts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"thoughts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								},
+								{
+									"name": "Thought no encontrado",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/thoughts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"thoughts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los pensamientos (Thoughts)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/thoughts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"thoughts"
+							]
+						},
+						"description": "Lista todos los pensamientos sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/thoughts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"thoughts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de pensamiento (Thought)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/thoughts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"thoughts"
+							]
+						},
+						"description": "Modifica los datos de un pensamiento."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/thoughts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"thoughts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda un nuevo pensamiento (Thought)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/thoughts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"thoughts"
+							]
+						},
+						"description": "Guarda la información de un nuevo pensamiento."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/thoughts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"thoughts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "somedays",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de una tarea a realizar algún día (Someday)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/somedays/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"somedays",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de una tarea a realizar algún día (Someday) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Someday no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/somedays/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"somedays",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idSomeday\": 64918083,\n \"name\": \"dolo\",\n \"createdDate\": \"1976-05-09T10:46:06.797Z\",\n \"tickleDate\": \"1955-10-17T09:31:27.453Z\",\n \"notes\": \"quis ut\",\n \"_links\": {}\n}"
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/somedays/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"somedays",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								}
+							]
+						},
+						{
+							"name": "Elimina una tarea a realizar algún día (Someday)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/somedays/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"somedays",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina una tareas a realizar algún día (Someday) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Someday no encontrada",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/somedays/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"somedays",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/somedays/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"somedays",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todas las tareas que se realizarán algún día (Somedays)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/somedays",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"somedays"
+							]
+						},
+						"description": "Lista todas las tareas que se realizarán algún día sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/somedays",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"somedays"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de una tarea a realizar algún día (Someday)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/somedays",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"somedays"
+							]
+						},
+						"description": "Modifica los datos de una tareas a realizar algún día."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/somedays",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"somedays"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda una nueva tarea a realizar algún día (Someday)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/somedays",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"somedays"
+							]
+						},
+						"description": "Guarda la información de una nueva tareas a realizar algún día."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/somedays",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"somedays"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "references",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de una referencia (Reference)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/references/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"references",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de una referencia (Reference) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Reference no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/references/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"references",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idReference\": -64900359,\n \"name\": \"non \",\n \"createdDate\": \"2011-02-06T18:07:41.342Z\",\n \"notes\": \"magna voluptate minim ex nostrud\",\n \"_links\": {}\n}"
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/references/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"references",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								}
+							]
+						},
+						{
+							"name": "Elimina una referencia (Reference)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/references/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"references",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina una referencia (Reference) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Reference no encontrada",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/references/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"references",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/references/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"references",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todas las referenciaes (References)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/references",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"references"
+							]
+						},
+						"description": "Lista todas las referenciaes sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/references",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"references"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de una referencia (Reference)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/references",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"references"
+							]
+						},
+						"description": "Modifica los datos de una referencia."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/references",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"references"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda una nueva referencia (Reference)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/references",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"references"
+							]
+						},
+						"description": "Guarda la información de una nueva referencia."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/references",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"references"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "projects",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de un proyecto (Project)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/projects/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"projects",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de un proyecto (Project) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Project no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/projects/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"projects",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idProject\": 41359991,\n \"name\": \"Duis\",\n \"dueDate\": \"2008-03-12T02:15:48.762Z\",\n \"createdDate\": \"1982-04-13T02:13:30.963Z\",\n \"done\": true,\n \"doneDate\": \"2007-10-10T14:08:18.392Z\",\n \"purpose\": \"temp\",\n \"vision\": \"cupi\",\n \"brainstorming\": \"culp\",\n \"organizing\": \"esse\",\n \"notes\": \"officia velit sint sit\",\n \"_links\": {}\n}"
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/projects/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"projects",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								}
+							]
+						},
+						{
+							"name": "Elimina un proyecto (Project)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/projects/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"projects",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina un proyecto (Project) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/projects/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"projects",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								},
+								{
+									"name": "Project no encontrada",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/projects/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"projects",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Obtiene información de las acciones (Actions) de un proyecto (Project)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/projects/:id/actions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"projects",
+										":id",
+										"actions"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de las acciones (Actions) de un proyecto (Project) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Project no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/projects/:id/actions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"projects",
+												":id",
+												"actions"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/projects/:id/actions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"projects",
+												":id",
+												"actions"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los proyectos (Projects)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/projects",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects"
+							]
+						},
+						"description": "Lista todos los proyectos sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/projects",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de un proyecto (Project)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/projects",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects"
+							]
+						},
+						"description": "Modifica los datos de un proyecto."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/projects",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda un nuevo proyecto (Project)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Terminar proyecto de Escalab Spring\",\n    \"dueDate\": \"2021-01-15T18:00:00\",\n    \"done\": false,\n    \"purpose\": \"Obtener la certificación de Spring en Escalab\",\n    \"vision\": \"Poder explicar al resto de mi equipo la forma correcta de utilizar Spring orientado a Microservicios HATEOAS\",\n    \"brainstorming\": \"\",\n    \"organizing\": \"\",\n    \"notes\": \"# Puntos importantes\\n\\n- Pruebas de estres\\n- Al menos 1 DAO\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/projects",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects"
+							]
+						},
+						"description": "Guarda la información de un nuevo proyecto."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/projects",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Agrega una acción a este proyecto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/projects/:id_project/action/:id_action",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects",
+								":id_project",
+								"action",
+								":id_action"
+							],
+							"variable": [
+								{
+									"key": "id_project",
+									"value": "<integer>",
+									"type": "string",
+									"description": "(Required) "
+								},
+								{
+									"key": "id_action",
+									"value": "<integer>",
+									"type": "string",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Agrega una nueva acción a  este proyecto usando du ID"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/projects/:id_project/action/:id_action",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"projects",
+										":id_project",
+										"action",
+										":id_action"
+									],
+									"variable": [
+										{
+											"key": "id_project"
+										},
+										{
+											"key": "id_action"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Lista todos los proyectos (Projects) con el número de acciones que tiene cada uno",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/projects/actions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects",
+								"actions"
+							]
+						},
+						"description": "Lista todos los proyectos sin filtros con el número de acciones que tiene cada uno."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/projects/actions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"projects",
+										"actions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "goals",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de un objetivo (Goal)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/goals/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goals",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de un objetivo (Goal) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/goals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"goals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								},
+								{
+									"name": "Goal no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/goals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"goals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idGoal\": 50018877,\n \"name\": \"sed \",\n \"startDate\": \"2006-08-21T11:56:06.969Z\",\n \"endDate\": \"1991-02-14T14:33:55.579Z\",\n \"vision\": \"ex n\",\n \"accountability\": \"dolo\",\n \"rewards\": \"eu a\",\n \"obstacles\": \"elit\",\n \"support\": \"pari\",\n \"brainstorming\": \"pari\",\n \"achieved\": false,\n \"achievedDateTime\": \"1960-10-02T13:05:56.608Z\",\n \"createdDate\": \"2004-04-12T00:38:14.079Z\",\n \"notes\": \"la\",\n \"_links\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Elimina un objetivo (Goal)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/goals/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goals",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina un objetivo (Goal) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Goal no encontrada",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/goals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"goals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/goals/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"goals",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los objetivos (Goals)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/goals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"goals"
+							]
+						},
+						"description": "Lista todos los objetivos sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/goals",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goals"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de un objetivo (Goal)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/goals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"goals"
+							]
+						},
+						"description": "Modifica los datos de un objetivo."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/goals",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goals"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda un nuevo objetivo (Goal)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/goals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"goals"
+							]
+						},
+						"description": "Guarda la información de un nuevo objetivo."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/goals",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goals"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "goal levels",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de un nivel de objetivo (GoalLevel)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/goal_levels/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goal_levels",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de un nivel de objetivo (GoalLevel) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "GoalLevel no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/goal_levels/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"goal_levels",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idGoalLevel\": 61716970,\n \"name\": \"ea E\",\n \"_links\": {}\n}"
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/goal_levels/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"goal_levels",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								}
+							]
+						},
+						{
+							"name": "Elimina un nivel de objetivo (GoalLevel)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/goal_levels/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goal_levels",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina un nivel de objetivo (GoalLevel) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/goal_levels/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"goal_levels",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								},
+								{
+									"name": "GoalLevel no encontrada",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/goal_levels/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"goal_levels",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los nivel de objetivos (GoalLevels)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/goal_levels",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"goal_levels"
+							]
+						},
+						"description": "Lista todos los nivel de objetivos sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/goal_levels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goal_levels"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de un nivel de objetivo (GoalLevel)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/goal_levels",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"goal_levels"
+							]
+						},
+						"description": "Modifica los datos de un nivel de objetivo."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/goal_levels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goal_levels"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda un nuevo nivel de objetivo (GoalLevel)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/goal_levels",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"goal_levels"
+							]
+						},
+						"description": "Guarda la información de un nuevo nivel de objetivo."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/goal_levels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"goal_levels"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "delegates",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de un delegado (Delegate)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/delegates/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"delegates",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de un delegado (Delegate) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Delegate no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/delegates/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"delegates",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idDelegate\": -62753809,\n \"name\": \"sit \",\n \"email\": \"nulla ipsum et enim\",\n \"active\": true,\n \"_links\": {}\n}"
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/delegates/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"delegates",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								}
+							]
+						},
+						{
+							"name": "Elimina un delegado (Delegate)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/delegates/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"delegates",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina un delegado (Delegate) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/delegates/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"delegates",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								},
+								{
+									"name": "Delegate no encontrada",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/delegates/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"delegates",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los delegados (Delegates)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/delegates",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"delegates"
+							]
+						},
+						"description": "Lista todos los delegados sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/delegates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"delegates"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de un delegado (Delegate)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/delegates",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"delegates"
+							]
+						},
+						"description": "Modifica los datos de un delegado."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/delegates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"delegates"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda un nuevo delegado (Delegate)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/delegates",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"delegates"
+							]
+						},
+						"description": "Guarda la información de un nuevo delegado."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/delegates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"delegates"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "contexts",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de un contexto (Context)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/contexts/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contexts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de un contexto (Context) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/contexts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contexts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								},
+								{
+									"name": "Context no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/contexts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contexts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idContext\": 15207074,\n \"name\": \"labo\",\n \"description\": \"aute\",\n \"_links\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Elimina un contexto (Context)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/contexts/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contexts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina un contexto (Context) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/contexts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contexts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								},
+								{
+									"name": "Context no encontrado",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/contexts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contexts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los contextos (Contexts)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/contexts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contexts"
+							]
+						},
+						"description": "Lista todos los contextos sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/contexts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contexts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de un contexto (Context)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/contexts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contexts"
+							]
+						},
+						"description": "Modifica los datos de un contexto."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contexts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contexts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda un nuevo contexto (Context)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/contexts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contexts"
+							]
+						},
+						"description": "Guarda la información de un nuevo contexto."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contexts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contexts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "attachments",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de un adjunto (Attachment)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/attachments/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de un adjunto (Attachment) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Attachment no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/attachments/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"attachments",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idAttachment\": -76408972,\n \"name\": \"ulla\",\n \"createdDate\": \"1977-03-16T10:41:08.367Z\",\n \"path\": \"ut a\",\n \"size\": -2236194,\n \"_links\": {}\n}"
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/attachments/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"attachments",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								}
+							]
+						},
+						{
+							"name": "Elimina un adjunto (Attachment)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/attachments/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina un adjunto (Attachment) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Attachment no encontrada",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/attachments/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"attachments",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/attachments/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"attachments",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los adjuntos (Attachments)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/attachments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"attachments"
+							]
+						},
+						"description": "Lista todos los adjuntos sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/attachments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de un adjunto (Attachment)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/attachments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"attachments"
+							]
+						},
+						"description": "Modifica los datos de un adjunto."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/attachments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda un nuevo adjunto (Attachment)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/attachments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"attachments"
+							]
+						},
+						"description": "Guarda la información de un nuevo adjunto."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/attachments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "actions",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Obtiene información de una acción (Action)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/actions/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actions",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtiene la información de una acción (Action) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/actions/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "\"officia\""
+								},
+								{
+									"name": "Action no encontrada",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/actions/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"idAction\": 29340348,\n \"name\": \"nost\",\n \"dueDate\": \"2019-05-12T10:04:06.820Z\",\n \"createdDate\": \"2004-09-26T10:16:22.694Z\",\n \"done\": true,\n \"doneDate\": \"1952-07-10T14:27:38.868Z\",\n \"success\": \"elit\",\n \"notes\": \"aliquip dolor\",\n \"delegateFollowUp\": \"2009-02-05T19:39:07.878Z\",\n \"nextAction\": false,\n \"_links\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Elimina una acción (Action)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/actions/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actions",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Elimina una acción (Action) buscando por su ID."
+							},
+							"response": [
+								{
+									"name": "Action no encontrada",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/actions/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ejecución exitosa",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/actions/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actions",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "officia"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todas las acciones (Actions)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/actions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actions"
+							]
+						},
+						"description": "Lista todas las acciones sin filtros."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/actions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Modifica todos los datos de una acción (Action)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/actions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actions"
+							]
+						},
+						"description": "Modifica los datos de una acción."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/actions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				},
+				{
+					"name": "Guarda una nueva acción (Action)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/actions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actions"
+							]
+						},
+						"description": "Guarda la información de una nueva acción."
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\"\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/actions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "officia"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "usuarios",
+			"item": [
+				{
+					"name": "Lista todos los usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						},
+						"description": "Lista todos los usuarios existentes"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"idUsuario\": 62717104,\n  \"username\": \"dolore elit Lorem ipsum\",\n  \"password\": \"ad sint\",\n  \"enabled\": false,\n  \"roles\": [\n   {\n    \"idRol\": 63136195,\n    \"nombre\": \"laborum sed magna veniam\",\n    \"descripcion\": \"do eiusmod proident\",\n    \"_links\": {}\n   },\n   {\n    \"idRol\": 53177892,\n    \"nombre\": \"incididunt dolore\",\n    \"descripcion\": \"eu ut laboris dolore Duis\",\n    \"_links\": {}\n   }\n  ],\n  \"_links\": {}\n },\n {\n  \"idUsuario\": 53417723,\n  \"username\": \"elit in\",\n  \"password\": \"pariatur ad sit\",\n  \"enabled\": false,\n  \"roles\": [\n   {\n    \"idRol\": 72342339,\n    \"nombre\": \"esse do Ut in est\",\n    \"descripcion\": \"reprehenderit nostrud\",\n    \"_links\": {}\n   },\n   {\n    \"idRol\": -32616965,\n    \"nombre\": \"cillum Ut\",\n    \"descripcion\": \"enim consectetur\",\n    \"_links\": {}\n   }\n  ],\n  \"_links\": {}\n }\n]"
+						}
+					]
+				},
+				{
+					"name": " Obtiene usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Retorna un único usuario"
+					},
+					"response": [
+						{
+							"name": "Ejecución exitosa",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Usuario no encontrado",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "oauth",
+			"item": [
+				{
+					"name": "token",
+					"item": [
+						{
+							"name": "get Access Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/token?parameters=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									],
+									"query": [
+										{
+											"key": "parameters",
+											"value": "<object>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/oauth/token?parameters=<object>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"oauth",
+												"token"
+											],
+											"query": [
+												{
+													"key": "parameters",
+													"value": "<object>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "post Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"access_token\", pm.response.json().access_token);",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "proyecto_propio_id",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "Yv!zN2!FdGK#JQjJ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "nparrado",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/oauth/token?parameters=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									],
+									"query": [
+										{
+											"key": "parameters",
+											"value": "<object>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/oauth/token?parameters=<object>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"oauth",
+												"token"
+											],
+											"query": [
+												{
+													"key": "parameters",
+													"value": "<object>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "check token",
+					"item": [
+						{
+							"name": "check Token 4",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"check_token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"oauth",
+												"check_token"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "check Token 2",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"check_token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"oauth",
+												"check_token"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "check Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"check_token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"oauth",
+												"check_token"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "check Token 1",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"check_token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"oauth",
+												"check_token"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "check Token 5",
+							"request": {
+								"method": "OPTIONS",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"check_token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "OPTIONS",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"oauth",
+												"check_token"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "check Token 3",
+							"request": {
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"check_token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "HEAD",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"oauth",
+												"check_token"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "check Token 6",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"check_token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/oauth/check_token?token=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"oauth",
+												"check_token"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "approve Or Deny",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/oauth/authorize?approvalParameters=<object>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"oauth",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "approvalParameters",
+									"value": "<object>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/authorize?approvalParameters=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "approvalParameters",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "get Key",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/oauth/token_key",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"oauth",
+								"token_key"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/oauth/token_key",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"oauth",
+										"token_key"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

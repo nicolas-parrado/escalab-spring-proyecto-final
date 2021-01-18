@@ -24,12 +24,6 @@ public class GoalLevel extends RepresentationModel<GoalLevel> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idGoalLevel;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "goalLevel", fetch = FetchType.LAZY)
-    @Schema(description = "Listado de objetivos con este nivel")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"goalLevel","projects"})
-    private Set<Goal> goals = new HashSet<>();
-
     @Column(name = "name", length = 70)
     @Size(min = 3, max = 70, message = "Nombre debe tener mínimo 3 caracteres y máximo de 70")
     @Schema(description = "Nombre del nivel de objetivo")
