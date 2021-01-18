@@ -1,20 +1,16 @@
 package escalab.spring.nparrado.backend_spring;
 
-import escalab.spring.nparrado.backend_spring.model.Action;
-import escalab.spring.nparrado.backend_spring.model.Project;
 import escalab.spring.nparrado.backend_spring.model.Rol;
 import escalab.spring.nparrado.backend_spring.model.Usuario;
 import escalab.spring.nparrado.backend_spring.repo.IActionRepo;
 import escalab.spring.nparrado.backend_spring.repo.IProjectRepo;
 import escalab.spring.nparrado.backend_spring.repo.IRolRepo;
 import escalab.spring.nparrado.backend_spring.repo.IUsuarioRepo;
-import org.apache.tomcat.jni.Local;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,19 +50,5 @@ public class BackendSpringApplication {
 
 		usuarioRepo.save(usuario);
 
-		// Se agrega un proyecto con acciones
-
-		Project p = new Project();
-		p.setDone(false);
-		p.setName("Proyecto Escalab");
-		p.setCreatedDate(LocalDateTime.now());
-
-		p = projectRepo.save(p);
-
-		Action action = new Action();
-		action.setName("Tarea 1");
-		action.setCreatedDate(LocalDateTime.now());
-		action.setProject(p);
-		actionRepo.save(action);
 	}
 }

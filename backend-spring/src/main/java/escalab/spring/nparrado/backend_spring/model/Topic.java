@@ -24,37 +24,13 @@ public class Topic extends RepresentationModel<Topic> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTopic;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic", fetch = FetchType.LAZY)
-    @Schema(description = "Listado de pensamientos que tiene este tópico asignado")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"topic"})
-    private Set<Thought> thoughts = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic", fetch = FetchType.LAZY)
-    @Schema(description = "Listado de somedays que tiene asignado este tópico")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","topic"})
-    private Set<Someday> somedays = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic", fetch = FetchType.LAZY)
-    @Schema(description = "Listado de proyectos que tiene asignado este tópico")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","actions","references","topic","goal"})
-    private Set<Project> projects = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "topic", fetch = FetchType.LAZY)
-    @Schema(description = "Listado de acciones que tiene asignado este tópico")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","topic","actionStatus","context","delegate","attachments","project"})
-    private Set<Action> actions = new HashSet<>();
-
     @Column(name = "name", length = 70)
     @Size(min = 3, max = 70, message = "Nombre debe tener mínimo 3 caracteres y máximo de 70")
     @Schema(description = "Nombre del Tópico")
     private String name;
 
-    @Column(name = "description", length = 255)
-    @Size(max = 255, message = "Description debe tener como máximo 255 caracteres")
+    @Column(name = "description", length = 256)
+    @Size(max = 256, message = "Description debe tener como máximo 256 caracteres")
     @Schema(description = "Nombre del Tópico")
     private String description;
 

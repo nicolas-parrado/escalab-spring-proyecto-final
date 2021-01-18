@@ -8,8 +8,6 @@ import org.springframework.hateoas.RepresentationModel;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "delegate")
@@ -25,14 +23,9 @@ public class Delegate extends RepresentationModel<Delegate> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDelegate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "delegate", fetch = FetchType.LAZY)
-    @Schema(description = "Listado de acciones que tiene delegada la persona ")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","topic","actionStatus","context","delegate","attachments","project"})
-    private Set<Action> actions = new HashSet<>();
-
     @Column(name = "name", length = 70)
     @Size(min = 3, max = 70, message = "Nombre debe tener mínimo 3 caracteres y máximo de 70")
+    @Schema(description = "Nombre de la persona delegada")
     private String name;
 
     @Column(name = "email")

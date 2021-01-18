@@ -4,6 +4,7 @@ import escalab.spring.nparrado.backend_spring.dto.ActionsProject;
 import escalab.spring.nparrado.backend_spring.exception.ModeloNotFoundException;
 import escalab.spring.nparrado.backend_spring.model.Action;
 import escalab.spring.nparrado.backend_spring.model.Project;
+import escalab.spring.nparrado.backend_spring.service.IActionService;
 import escalab.spring.nparrado.backend_spring.service.IProjectService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -37,6 +38,10 @@ public class ProjectController {
 
     @Autowired
     private IProjectService service;
+
+    @Autowired
+    private IActionService actionService;
+
 
     private Logger log = LoggerFactory.getLogger(ProjectController.class);
 
@@ -168,7 +173,27 @@ public class ProjectController {
     }
 
 
+    @Operation( summary = "Agrega una acción a este proyecto",
+    description = "Agrega una nueva acción a  este proyecto usando du ID",
+    tags = {"Projects"})
+    @PostMapping("/{id_project}/action/{id_action}")
+    public ResponseEntity<Project> addAction(@PathVariable("id_project") Integer idProject, @PathVariable("id_action") Integer idAction) {
+        Project p = service.leerPorId(idProject);
 
+        if( p == null ){
+            throw new ModeloNotFoundException("ID de proyecto no encontrado " + idProject);
+        }
+
+        Action a = actionService.leerPorId(idAction);
+        if( a == null ){
+            throw new ModeloNotFoundException("ID de action no encontrado " + idAction);
+        }
+
+        p.getActions().add(a);
+        p = service.modificar(p);
+        return new ResponseEntity<>(p, HttpStatus.OK);
+
+    }
 
 
     /**
@@ -180,7 +205,7 @@ public class ProjectController {
         project.add(linkTo(methodOn(ProjectController.class).listarPorId(project.getIdProject())).withSelfRel());
 
         // Links adicionales links
-        project.add(linkTo(methodOn(ProjectController.class).acciones_por_id(project.getIdProject())).withRel("Acciones"));
+        project.add(linkTo(methodOn(ProjectController.class).acciones_por_id(project.getIdProject())).withRel("acciones"));
 
 
     }

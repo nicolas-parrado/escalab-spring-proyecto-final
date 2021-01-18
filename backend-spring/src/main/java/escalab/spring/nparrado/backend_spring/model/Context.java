@@ -24,16 +24,11 @@ public class Context extends RepresentationModel<Context> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idContext;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "context", fetch = FetchType.LAZY)
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","topic","actionStatus","context","delegate","attachments","project"})
-    private Set<Action> actions = new HashSet<>();
-
     @Column(name = "name", length = 70)
     @Size(min = 3, max = 70, message = "Nombre debe tener mínimo 3 caracteres y máximo de 70")
     private String name;
 
-    @Column(name = "description", length = 255)
-    @Size(max = 255, message = "Descripción debe tener como máximo 255 caracteres")
+    @Column(name = "description", length = 256)
+    @Size(max = 256, message = "Descripción debe tener como máximo 256 caracteres")
     private String description;
 }

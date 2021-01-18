@@ -32,18 +32,10 @@ public class Reference extends RepresentationModel<Reference> {
     @JsonIgnoreProperties(ignoreUnknown = true, value = {"topic"})
     private Thought thought;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reference", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Schema(description = "Listado de archivos adjuntos que tiene esta referencia")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"action","reference"})
     private Set<Attachment> attachments = new HashSet<>();
-
-    @ManyToOne
-    @JoinColumn(name = "id_project")
-    @Schema(description = "Proyecto al que está asignado esta referencia")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","actions","references","topic","goal"})
-    private Project project;
 
     @Column(name = "name", length = 70)
     @Size(min = 3, max = 70, message = "Nombre debe tener mínimo 3 caracteres y máximo de 70")

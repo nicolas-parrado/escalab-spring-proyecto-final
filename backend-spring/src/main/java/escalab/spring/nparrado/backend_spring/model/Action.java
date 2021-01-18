@@ -2,10 +2,10 @@ package escalab.spring.nparrado.backend_spring.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import org.hibernate.annotations.Type;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -29,50 +29,26 @@ public class Action  extends RepresentationModel<Action> {
     private Integer idAction;
 
     @ManyToOne
-    @Schema(description = "Pensamiento del cual vino esta acción")
-    @JoinColumn(name = "id_thought")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"topic"})
-    private Thought thought;
-
-    @ManyToOne
-    @Schema(description = "Tema o Tópico al que pertenece esta acción")
-    @JoinColumn(name = "id_topic")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thoughts","somedays","projects","actions"})
-    private Topic topic;
-
-    @ManyToOne
     @Schema(description = "Estado de la acción, puede ser pendiente o completado")
     @JoinColumn(name = "id_action_status")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"actions"})
     private ActionStatus actionStatus;
 
     @ManyToOne
     @Schema(description = "Contexto asociado a esta acción")
     @JoinColumn(name = "id_context")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"actions"})
     private Context context;
 
     @ManyToOne
     @Schema(description = "Persona a quien se delegó la acción")
     @JoinColumn(name = "id_delegate")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"actions"})
     private Delegate delegate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "action", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"action","reference"})
     private Set<Attachment> attachments = new HashSet<>();
-
-    @ManyToOne
-    @JoinColumn(name = "id_project")
-    @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thought","actions","references","topic","goal"})
-    private Project project;
 
     @Column(name = "name", length = 70)
     @Size(min = 3, max = 70, message = "Nombre debe tener mínimo 3 caracteres y máximo de 70")
@@ -101,6 +77,7 @@ public class Action  extends RepresentationModel<Action> {
     private String success;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "notes")
     @Schema(description = "Notas adicionales en formato Markdown de la acción")
     private String notes;

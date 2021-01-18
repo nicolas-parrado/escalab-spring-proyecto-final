@@ -3,6 +3,7 @@ package escalab.spring.nparrado.backend_spring.model;
 import com.fasterxml.jackson.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import org.hibernate.annotations.Type;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -26,10 +27,10 @@ public class Thought extends RepresentationModel<Thought> {
     @JoinColumn(name = "id_topic")
     @Schema(description = "Tema o Tópico al que pertenece este pensamiento")
     @JsonIgnore
-    @JsonIgnoreProperties(ignoreUnknown = true, value = {"thoughts","somedays","projects","actions"})
     private Topic topic;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "notes")
     @Schema(description = "Notas adicionales en formato Markdown del pensamiento")
     private String notes;

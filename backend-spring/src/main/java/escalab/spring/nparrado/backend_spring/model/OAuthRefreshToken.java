@@ -2,7 +2,6 @@ package escalab.spring.nparrado.backend_spring.model;
 
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
-import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
